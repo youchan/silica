@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "silica"
+require "thor"
+
+module Silica
+  class Cli < Thor
+    desc 'new', 'create new project'
+
+    def new(name)
+      puts "Create new project '#{name}'"
+    end
+  end
+end
+
+Silica::Cli.start(ARGV)
