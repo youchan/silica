@@ -20,17 +20,13 @@ Or install it yourself as:
 
 ## Create your app
 
-```
-silica new your_app
-cd your_app
-bundle install
-```
+    $ silica new your_app
+    $ cd your_app
+    $ bundle install
 
 ## Start app
 
-```
-bundle exec rackup
-```
+    $ bundle exec rackup
 
 ## Contributing
 
