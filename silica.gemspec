@@ -13,8 +13,8 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Web application framework spcialized for the single page applications using Opalrb.}
   spec.homepage      = "https://github.com/youchan/silica"
 
-  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*']
-  spec.bindir        = "exe"
+  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['template/**/*']
+  spec.bindir        = "bin"
   spec.executables   = "silica"
   spec.require_paths = ["lib"]
 
