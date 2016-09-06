@@ -1,4 +1,5 @@
 require 'hyalite'
+#require 'menilite'
 
 class AppView
   include Hyalite::Component
