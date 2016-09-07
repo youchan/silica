@@ -12,6 +12,7 @@ module Silica
       FileUtils.mkdir name
       dir = Dir.new(__dir__+'/../../template/project')
       dir.each do |file|
+        next if file == '..'
         FileUtils.cp_r(dir.path + '/' + file, name)
       end
 
