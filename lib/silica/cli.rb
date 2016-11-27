@@ -9,7 +9,7 @@ module Silica
     def new(name)
       puts "Create new project '#{name}'"
 
-      FileUtils.mkdir name
+      Dir.exist?(name) or FileUtils.mkdir(name)
       dir = Dir.new(__dir__+'/../../template/project')
       dir.each do |file|
         next if file == '..'
