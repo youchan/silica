@@ -6,7 +6,7 @@ gem 'thin'
 
 gem 'opal-haml'
 gem 'hyalite'
-gem 'menilite', github: 'youchan/menilite'
+gem 'menilite'
 
 gem 'rake'
 gem 'sqlite3'
