@@ -21,6 +21,7 @@ class Server < Sinatra::Base
   configure do
     set opal: OPAL
     enable :sessions
+    set :protection, except: :json_csrf
   end
 
   get '/' do
