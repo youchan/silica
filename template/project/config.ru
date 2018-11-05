@@ -19,10 +19,6 @@ app = Rack::Builder.app do
     run Server::OPAL.sprockets
   end
 
-  map '/__OPAL_SOURCE_MAPS__' do
-    run Opal::SourceMapServer.new(Server::OPAL.sprockets, '/__OPAL_SOURCE_MAPS__')
-  end
-
   map '/api' do
     router = Menilite::Router.new
     run router.routes(server.settings)
