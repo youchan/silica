@@ -1,24 +1,33 @@
-require 'thor'
-require 'fileutils'
-require 'git'
+require "thor"
+require "fileutils"
+require "git"
+require_relative "webpack_installer"
 
 module Silica
   class Cli < Thor
+    option :webpack, type: :boolean
     desc 'new', 'create new project'
 
     def new(name)
-      puts "Create new project '#{name}'"
+      puts "Creating new project '#{name}'"
 
-      Dir.exist?(name) or FileUtils.mkdir(name)
-      dir = Dir.new(__dir__+'/../../template/project')
-      dir.each do |file|
-        next if file == '..'
-        FileUtils.cp_r(dir.path + '/' + file, name)
+      Dir.exist?(name) or FileUtils.mkdir_p(name)
+
+      template_dir = Dir.new(__dir__+'/../../template/project')
+
+      Dir.chdir(name) do |name|
+        if options[:webpack]
+          WebpackInstaller.new.install
+        end
+        template_dir.each do |file|
+          next if file == '..'
+          puts "Creating #{file}"
+          FileUtils.cp_r(template_dir.path + "/" + file, ".")
+        end
+        Git.init
       end
 
-      FileUtils.cd name
-
-      Git.init
+      puts "Project '#{name}' created"
     end
   end
 end
